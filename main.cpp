@@ -111,7 +111,8 @@ void do_test4(int num_threads,int N,int M,double *data) {
 int main(int argc, char *argv[])
 {
 	int N=2e2;
-	int M=2e3;
+	int M=4e3;
+	int max_threads=20;
 
 	double *data=(double *)malloc(sizeof(double)*N*M);
 	for (long i=0; i<N; i++) {
@@ -121,9 +122,9 @@ int main(int argc, char *argv[])
 	}
 
 	printf("\n");
-	{
+    if (0) {
 		double elapsed1=0;
-		for (int num_threads=1; num_threads<=10; num_threads++) {
+		for (int num_threads=1; num_threads<=max_threads; num_threads++) {
 			QTime timer; timer.start();
 			do_test1(num_threads,N,M);
 			double elapsed=timer.elapsed()*1.0/1000;
@@ -132,9 +133,9 @@ int main(int argc, char *argv[])
 		}
 	}
 	printf("\n");
-	{
+    if (0) {
 		double elapsed1=0;
-		for (int num_threads=1; num_threads<=10; num_threads++) {
+		for (int num_threads=1; num_threads<=max_threads; num_threads++) {
 			QTime timer; timer.start();
 			do_test2(num_threads,N,M);
 			double elapsed=timer.elapsed()*1.0/1000;
@@ -143,9 +144,9 @@ int main(int argc, char *argv[])
 		}
 	}
 	printf("\n");
-	{
+    if (1) {
 		double elapsed1=0;
-		for (int num_threads=1; num_threads<=10; num_threads++) {
+		for (int num_threads=1; num_threads<=max_threads; num_threads++) {
 			QTime timer; timer.start();
 			do_test3(num_threads,N,M,data);
 			double elapsed=timer.elapsed()*1.0/1000;
@@ -154,9 +155,9 @@ int main(int argc, char *argv[])
 		}
 	}
 	printf("\n");
-	{
+    if (0) {
 		double elapsed1=0;
-		for (int num_threads=1; num_threads<=10; num_threads++) {
+		for (int num_threads=1; num_threads<=max_threads; num_threads++) {
 			QTime timer; timer.start();
 			do_test4(num_threads,N,M,data);
 			double elapsed=timer.elapsed()*1.0/1000;
